@@ -5,7 +5,7 @@
   (https://pcarton.github.com/images/exampleIslandGen.png)
 
   Long Version -
-  A small Island Generator that can make an Island with biomes based on magic and development (names only, it just more Perlin noise). Needs the [Love](love2d.org) engine for Lua.
+  A small Island Generator that can make an Island with biomes based on magic and development (names only, it just more Perlin noise). Needs the [Love](http://love2d.org) engine for Lua.
 #Requirements
   Lua and LOVE (linked above)
 #Setup
