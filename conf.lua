@@ -5,7 +5,7 @@ function love.conf(t)
 	t.window.fullscreen = false
 	t.window.borderless = true
 	t.window.width=512
-	t.window.height=512
+	t.window.height=t.window.width
 
 	t.modules.audio = false
 	t.modules.joystick =false
