@@ -5,13 +5,13 @@ function love.load()
 	initialSeed3 = initialSeed*13-2113
 	runs =0
 	g=love.graphics
-	
+
 	persistence = .5
 	octaves = 6
 
 	windowWidth, windowHeight = love.window.getMode()
 
-	islandWidth = 1024
+	islandWidth = windowWidth
 	islandHeight = islandWidth
 
 	seedSize = islandWidth/16
@@ -78,7 +78,7 @@ function love.load()
 			end
 		end
 	g.setCanvas()
-	
+
 end
 
 function love.update(dt)
@@ -146,13 +146,13 @@ function genIsland()
 	local devY = math.floor(math.random(islandHeight/3,2*islandHeight/3)-1)
 	local maxD = math.sqrt((2*islandWidth/2)^2 + (2*islandHeight/2)^2)
 
-	
+
 	island ={}
 	for i=0,islandWidth-1,1 do
 		island[i] = {}
 		for j=0,islandHeight-1,1 do
 			local noiseVal = (perlin(i/seedSize,j/seedSize,initialSeed)+1)/2
-			
+
 			local dist = math.sqrt((midX-i)^2+(midY-j)^2)
 			local gradientVal = ((dist)/max)
 			local h = (noiseVal-gradientVal)*255
@@ -184,12 +184,12 @@ function genIsland()
 				island[i][j] =0
 				--print("0 at Row "..i.." Col "..j)
 			elseif (i%seedSize==seedSize-1 and j%seedSize==seedSize-1) then
-				c =love.math.random(255) 
+				c =love.math.random(255)
 				island[i][j]= c
 				island[i+1][j] = c
 				island[i+1][j+1]=c
 				island[i][j+1]=c
-				--print(island[i][j])			
+				--print(island[i][j])
 			end
 		end
 	end
@@ -206,7 +206,7 @@ function genIsland()
 			--print(island[botRow][rightCol])
 			--midpointFractal(island,leftCol,topRow,rightCol,topRow,leftCol,botRow,rightCol,botRow)
 			--midpointFractal2(island,seedSize)
-			
+
 			--print(island[topRow][leftCol])
 			--print(island[topRow][rightCol])
 			--print(island[botRow][leftCol])
@@ -225,7 +225,7 @@ function noise(x,y, seed)
 	local tempSeed = (math.pi * (.5*(x+y)*(x+y+1)+y) +13) +seed
 	--print(seed)
 	math.randomseed(tempSeed)
-	local num = math.random(-100,100) 
+	local num = math.random(-100,100)
 	--print(num)
 	return num/100
 end
